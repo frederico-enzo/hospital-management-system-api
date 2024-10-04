@@ -23,10 +23,4 @@ O Sistema de Gerenciamento de Hospital (HMS) é uma aplicação desenvolvida par
 ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-%230E77B2.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-## Como Executar o Projeto
 
-### Backend
-
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu_usuario/sistema-gerenciamento-hospital.git
