@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ProntuarioDto {
     private Long id;
-    private Paciente paciente; // Relação com Paciente
-    private List<String> historicoMedico; // Anotações médicas
+    private Paciente paciente;
+    private List<String> historicoMedico;
     private List<String> tratamentos;
 }
