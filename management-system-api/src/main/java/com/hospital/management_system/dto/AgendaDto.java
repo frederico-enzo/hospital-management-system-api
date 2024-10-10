@@ -8,7 +8,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter @Setter @Data
+ @Data
 @NoArgsConstructor @AllArgsConstructor
 public class AgendaDto {
         private Long id;

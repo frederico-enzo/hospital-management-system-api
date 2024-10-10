@@ -9,8 +9,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Data @NoArgsConstructor
-@Getter @Setter @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class PacienteDto {
     private Long id;
 
