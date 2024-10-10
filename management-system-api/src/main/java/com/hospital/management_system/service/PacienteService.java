@@ -26,17 +26,18 @@ public class PacienteService{
     }
 
 
-    public String get(Long id){
-        return "Sucesso";
+    public PacienteDto get(Long id){
+        final Paciente paciente = repository.findById(id).orElse(null);
+        return toDTO(paciente);
     }
     public PacienteDto post(PacienteDto pacienteDto){
         return toDTO(repository.save(toModel(pacienteDto)));
     }
-    public String update(PacienteDto pacienteDto, Long id){
-        return "Sucesso";
+    public PacienteDto update(PacienteDto pacienteDto, Long id){
+        return toDTO(repository.save(toModel(pacienteDto)));
     }
-    public String delete(Long id){
-        return "Sucesso";
+    public void delete(Long id){
+        repository.deleteById(id);
     }
 
 }
