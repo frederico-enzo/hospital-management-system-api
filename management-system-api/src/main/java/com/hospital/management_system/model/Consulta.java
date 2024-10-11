@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "tb.consulta", schema = "public")
 public class Consulta {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_consulta")
@@ -34,4 +35,8 @@ public class Consulta {
 
     @OneToOne(mappedBy = "consulta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Prontuario prontuario;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_agenda")
+    private Agenda agenda;
 }

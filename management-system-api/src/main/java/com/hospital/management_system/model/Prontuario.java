@@ -40,4 +40,8 @@ public class Prontuario {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_consulta")
+    private Consulta consulta;
 }
