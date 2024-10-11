@@ -1,23 +1,37 @@
 package com.hospital.management_system.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
+import java.time.LocalDateTime;
+
+@Entity @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "tb.consulta", schema = "public")
 public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_consulta")
     private Long id;
-    private String dataConsulta;
-    private String horaConsulta;
-    private String status;
 
-    // Relação de uma consulta com um paciente
-    @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false)
+    @Column(name = "data_hora", nullable = false)
+    private LocalDateTime dataHora;
+
+    @Column(name = "motivo", nullable = false, length = 500)
+    private String motivo;
+
+    @Column(name = "observacoes", length = 2000)
+    private String observacoes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
 
-    // Relação de uma consulta com um médico
-    @ManyToOne
-    @JoinColumn(name = "medico_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
+
+    @OneToOne(mappedBy = "consulta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Prontuario prontuario;
 }
