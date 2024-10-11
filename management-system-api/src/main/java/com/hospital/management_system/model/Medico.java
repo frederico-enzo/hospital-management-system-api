@@ -8,20 +8,30 @@ import java.util.List;
 public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_medico")
     private Long id;
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
+
+    @Column(name = "sobrenome", nullable = false, length = 100)
     private String sobrenome;
-    private String especialidade;
+
+    @Column(name = "crm", nullable = false, unique = true, length = 15)
     private String crm;
+
+    @Column(name = "especialidade", nullable = false, length = 100)
+    private String especialidade;
+
+    @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
 
-    // Um médico pode ter várias consultas
-    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    @Column(name = "email", nullable = false, length = 100)
+    private String email;
+
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Consulta> consultas;
 
-    // Um médico tem uma agenda que pode ter várias consultas
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "agenda_id", referencedColumnName = "id")
-    private Agenda agenda;
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Agenda> agendas;
 }
 
