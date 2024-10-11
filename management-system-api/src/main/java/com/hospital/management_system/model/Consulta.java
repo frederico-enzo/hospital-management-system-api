@@ -7,12 +7,17 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Paciente paciente;
-    private Medico medico;
     private String dataConsulta;
     private String horaConsulta;
     private String status;
+
+    // Relação de uma consulta com um paciente
     @ManyToOne
-    @JoinColumn(name = "agenda_id")
-    private Agenda agenda;
+    @JoinColumn(name = "paciente_id", nullable = false)
+    private Paciente paciente;
+
+    // Relação de uma consulta com um médico
+    @ManyToOne
+    @JoinColumn(name = "medico_id", nullable = false)
+    private Medico medico;
 }

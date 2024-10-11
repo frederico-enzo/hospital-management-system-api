@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class RelatorioDto {
     private Long id;
-    private String tipo; // Ex: financeiro, operacional
-    private String conteudo; // Informações do relatório
+    private String tipo;
+    private String conteudo;
     private String dataGeracao;
 }

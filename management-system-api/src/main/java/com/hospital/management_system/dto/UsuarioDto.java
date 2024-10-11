@@ -9,6 +9,6 @@ public class UsuarioDto {
     private Long id;
     private String username;
     private String senha;
-    private String papel;
+    private String role;
     private boolean ativo;
 }
