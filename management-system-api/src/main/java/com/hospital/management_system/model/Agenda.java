@@ -10,17 +10,25 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Data @Entity @Table(name = "tb.agenda", schema = "public")
 public class Agenda {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_agenda")
     private Long id;
-    @Column(name = "horario_hisponivel")
-    private LocalDateTime horarioDisponivel;
-    @Column(name = "disponivel", unique = true)
-    private boolean disponivel;
-    @ManyToOne
-    @JoinColumn(name = "medico_id")
+
+    @Column(name = "data_hora", nullable = false)
+    private LocalDateTime dataHora;
+
+    @Column(name = "status", nullable = false, length = 50)
+    private String status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_paciente", nullable = false)
+    private Paciente paciente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
-    @OneToMany(mappedBy = "agenda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Consulta> consultas;
+
+    @OneToOne(mappedBy = "agenda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Consulta consulta;
 }
