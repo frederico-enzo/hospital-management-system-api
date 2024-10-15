@@ -1,2 +1,4 @@
-package com.hospital.management_system.service;public class RelatorioService {
+package com.hospital.management_system.service;
+
+public class RelatorioService {
 }
