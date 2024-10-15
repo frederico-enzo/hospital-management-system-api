@@ -1,2 +1,4 @@
-package com.hospital.management_system.service;public class ProntuarioService {
+package com.hospital.management_system.service;
+
+public class ProntuarioService {
 }
