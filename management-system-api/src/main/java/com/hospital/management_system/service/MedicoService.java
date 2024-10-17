@@ -1,4 +1,22 @@
 package com.hospital.management_system.service;
 
+import com.hospital.management_system.dto.ConsultaDto;
+import com.hospital.management_system.dto.MedicoDto;
+import com.hospital.management_system.model.Consulta;
+import com.hospital.management_system.model.Medico;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MedicoService {
+    @Autowired
+    private ModelMapper modelMapper;
+
+    private Medico toModel(MedicoDto medicoDto){
+        return modelMapper.map(medicoDto, Medico.class);
+    }
+    private MedicoDto toDTO(Medico medico){
+        return modelMapper.map(medico, MedicoDto.class);
+    }
 }
