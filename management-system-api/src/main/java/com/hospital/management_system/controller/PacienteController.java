@@ -26,14 +26,5 @@ public class PacienteController {
     public ResponseEntity<?> listarAll(){
         return ResponseEntity.ok(this.repository.findAll());
     }
-    @PostMapping
-    public ResponseEntity<?> cadastrarCondutor(@RequestBody @Validated final PacienteDto paciente){
-        try {
-            final PacienteDto newPaciente = this.service.post(paciente);
-            return ResponseEntity.ok(String.format("Condutor [ %s ] cadastrado com sucesso", newPaciente.getNome()));
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
 
 }
