@@ -1,10 +1,16 @@
 package com.hospital.management_system.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Entity
+@Entity @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "tb.medico", schema = "public")
 public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
