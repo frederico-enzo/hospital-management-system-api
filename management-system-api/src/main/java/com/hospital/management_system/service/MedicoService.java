@@ -21,7 +21,6 @@ public class MedicoService {
     private MedicoDto toDTO(Medico medico){
         return modelMapper.map(medico, MedicoDto.class);
     }
-
     public MedicoDto create(MedicoDto medico){
         return toDTO(repository.save(toModel(medico)));
     }
