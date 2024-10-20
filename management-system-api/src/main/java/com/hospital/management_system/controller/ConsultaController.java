@@ -1,8 +1,6 @@
 package com.hospital.management_system.controller;
 
-import com.hospital.management_system.dto.AgendaDto;
 import com.hospital.management_system.dto.ConsultaDto;
-import com.hospital.management_system.repository.AgendaRepository;
 import com.hospital.management_system.repository.ConsultaRepository;
 import com.hospital.management_system.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;

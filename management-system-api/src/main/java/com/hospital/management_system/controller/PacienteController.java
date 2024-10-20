@@ -1,13 +1,11 @@
 package com.hospital.management_system.controller;
 
-import com.hospital.management_system.dto.ConsultaDto;
 import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.model.Paciente;
 import com.hospital.management_system.repository.PacienteRepository;
 import com.hospital.management_system.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

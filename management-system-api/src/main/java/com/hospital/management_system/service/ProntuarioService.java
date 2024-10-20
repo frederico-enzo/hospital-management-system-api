@@ -1,11 +1,7 @@
 package com.hospital.management_system.service;
 
-import com.hospital.management_system.dto.MedicoDto;
-import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.dto.ProntuarioDto;
-import com.hospital.management_system.model.Medico;
 import com.hospital.management_system.model.Prontuario;
-import com.hospital.management_system.repository.PacienteRepository;
 import com.hospital.management_system.repository.ProntuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

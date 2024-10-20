@@ -1,8 +1,6 @@
 package com.hospital.management_system.service;
 
-import com.hospital.management_system.dto.AgendaDto;
 import com.hospital.management_system.dto.ConsultaDto;
-import com.hospital.management_system.model.Agenda;
 import com.hospital.management_system.model.Consulta;
 import com.hospital.management_system.repository.ConsultaRepository;
 import org.modelmapper.ModelMapper;

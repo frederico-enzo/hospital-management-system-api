@@ -1,6 +1,5 @@
 package com.hospital.management_system.service;
 
-import com.hospital.management_system.dto.ConsultaDto;
 import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.model.Paciente;
 import com.hospital.management_system.repository.PacienteRepository;
