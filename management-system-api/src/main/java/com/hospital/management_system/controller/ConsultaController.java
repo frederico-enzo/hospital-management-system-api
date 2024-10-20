@@ -1,13 +1,13 @@
 package com.hospital.management_system.controller;
 
+import com.hospital.management_system.dto.AgendaDto;
+import com.hospital.management_system.dto.ConsultaDto;
 import com.hospital.management_system.repository.AgendaRepository;
 import com.hospital.management_system.repository.ConsultaRepository;
 import com.hospital.management_system.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/consulta")
@@ -21,5 +21,12 @@ public class ConsultaController {
     public ResponseEntity<?> listarAll(){
         return ResponseEntity.ok(this.repository.findAll());
     }
+    @PostMapping
+    public ResponseEntity<ConsultaDto> create(@RequestBody ConsultaDto model) {
+        return ResponseEntity.ok(service.create(model));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ConsultaDto> update(@RequestBody ConsultaDto model) {
+        return ResponseEntity.ok(service.update(model));
+    }
 }
-

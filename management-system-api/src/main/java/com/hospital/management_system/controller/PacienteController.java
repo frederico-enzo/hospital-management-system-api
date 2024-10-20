@@ -1,5 +1,6 @@
 package com.hospital.management_system.controller;
 
+import com.hospital.management_system.dto.ConsultaDto;
 import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.model.Paciente;
 import com.hospital.management_system.repository.PacienteRepository;
@@ -26,5 +27,12 @@ public class PacienteController {
     public ResponseEntity<?> listarAll(){
         return ResponseEntity.ok(this.repository.findAll());
     }
-
+    @PostMapping
+    public ResponseEntity<PacienteDto> create(@RequestBody PacienteDto model) {
+        return ResponseEntity.ok(service.create(model));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<PacienteDto> update(@RequestBody PacienteDto model) {
+        return ResponseEntity.ok(service.update(model));
+    }
 }
