@@ -1,8 +1,10 @@
 package com.hospital.management_system.service;
 
 import com.hospital.management_system.dto.ConsultaDto;
+import com.hospital.management_system.dto.RelatorioDto;
 import com.hospital.management_system.model.Consulta;
 import com.hospital.management_system.repository.ConsultaRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +27,11 @@ public class ConsultaService {
     }
     public ConsultaDto update(ConsultaDto model){
         return toDTO(repository.save(toModel(model)));
+    }
+    public void delete(Long id){ repository.deleteById(id);}
+    public ConsultaDto read(Long id) {
+        return repository.findById(id)
+                .map(this::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Consulta não encontrado com o ID: " + id));
     }
 }
