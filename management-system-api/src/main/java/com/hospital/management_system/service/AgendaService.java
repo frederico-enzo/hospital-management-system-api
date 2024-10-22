@@ -9,13 +9,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AgendaService {
     @Autowired
     private AgendaRepository repository;
     @Autowired
     private ModelMapper modelMapper;
-
     private Agenda toModel(AgendaDto agendaDto){
         return modelMapper.map(agendaDto, Agenda.class);
     }
@@ -23,16 +24,29 @@ public class AgendaService {
         return modelMapper.map(agenda, AgendaDto.class);
     }
 
-    public AgendaDto create(AgendaDto model){
-        return toDTO(repository.save(toModel(model)));
+    //    ---------------------    CRUD METODOS    ---------------------
+
+    public List<AgendaDto> findAll(){
+        return repository.findAll().stream().map(this::toDTO).toList();
     }
-    public AgendaDto update(AgendaDto model){
-        return toDTO(repository.save(toModel(model)));
-    }
-    public void delete(Long id){ repository.deleteById(id);}
-    public AgendaDto read(Long id) {
+
+    public AgendaDto findById(Long id) {
         return repository.findById(id)
                 .map(this::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Agenda não encontrado com o ID: " + id));
     }
+
+    public AgendaDto post(AgendaDto model){
+        return toDTO(repository.save(toModel(model)));
+    }
+
+    public AgendaDto put(AgendaDto model, Long id){
+        return toDTO(repository.save(toModel(model)));
+    }
+
+    public void delete(Long id){ repository.deleteById(id); }
+
+
+    //    ---------------------    CRUD METODOS    ---------------------
+
 }

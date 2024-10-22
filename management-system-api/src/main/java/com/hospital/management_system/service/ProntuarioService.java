@@ -1,5 +1,6 @@
 package com.hospital.management_system.service;
 
+import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.dto.ProntuarioDto;
 import com.hospital.management_system.dto.RelatorioDto;
 import com.hospital.management_system.model.Prontuario;
@@ -8,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProntuarioService {
@@ -22,16 +25,29 @@ public class ProntuarioService {
     private ProntuarioDto toDTO(Prontuario prontuario){
         return modelMapper.map(prontuario, ProntuarioDto.class);
     }
-    public ProntuarioDto create(ProntuarioDto model){
-        return toDTO(repository.save(toModel(model)));
+
+    //    ---------------------    CRUD METODOS    ---------------------
+
+    public List<ProntuarioDto> findAll(){
+        return repository.findAll().stream().map(this::toDTO).toList();
     }
-    public ProntuarioDto update(ProntuarioDto model){
-        return toDTO(repository.save(toModel(model)));
-    }
-    public void delete(Long id){ repository.deleteById(id);}
-    public ProntuarioDto read(Long id) {
+
+    public ProntuarioDto findById(Long id) {
         return repository.findById(id)
                 .map(this::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Prontuario não encontrado com o ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Agenda não encontrado com o ID: " + id));
     }
+
+    public ProntuarioDto post(ProntuarioDto model){
+        return toDTO(repository.save(toModel(model)));
+    }
+
+    public ProntuarioDto put(ProntuarioDto model, Long id){
+        return toDTO(repository.save(toModel(model)));
+    }
+
+    public void delete(Long id){ repository.deleteById(id); }
+
+
+    //    ---------------------    CRUD METODOS    ---------------------
 }

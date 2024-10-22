@@ -1,5 +1,6 @@
 package com.hospital.management_system.service;
 
+import com.hospital.management_system.dto.MedicoDto;
 import com.hospital.management_system.dto.PacienteDto;
 import com.hospital.management_system.dto.RelatorioDto;
 import com.hospital.management_system.model.Paciente;
@@ -8,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PacienteService{
@@ -23,18 +26,29 @@ public class PacienteService{
         return modelMapper.map(paciente, PacienteDto.class);
     }
 
-    public PacienteDto create(PacienteDto model){
-        return toDTO(repository.save(toModel(model)));
+    //    ---------------------    CRUD METODOS    ---------------------
+
+    public List<PacienteDto> findAll(){
+        return repository.findAll().stream().map(this::toDTO).toList();
     }
-    public PacienteDto update(PacienteDto model){
+
+    public PacienteDto findById(Long id) {
+        return repository.findById(id)
+                .map(this::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Agenda não encontrado com o ID: " + id));
+    }
+
+    public PacienteDto post(PacienteDto model){
         return toDTO(repository.save(toModel(model)));
     }
 
-    public void delete(Long id){ repository.deleteById(id);}
-    public PacienteDto read(Long id) {
-        return repository.findById(id)
-                .map(this::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Paciente não encontrado com o ID: " + id));
+    public PacienteDto put(PacienteDto model, Long id){
+        return toDTO(repository.save(toModel(model)));
     }
+
+    public void delete(Long id){ repository.deleteById(id); }
+
+
+    //    ---------------------    CRUD METODOS    ---------------------
 
 }
